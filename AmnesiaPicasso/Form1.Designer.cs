@@ -30,11 +30,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.TexturePreviewImageBox = new System.Windows.Forms.PictureBox();
-            this.download_template = new System.Windows.Forms.Button();
+            this.DownloadTemplateBtn = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.ModelSelection = new System.Windows.Forms.ComboBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.EntityNameTextBox = new System.Windows.Forms.TextBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.NameSameAsTextureCheckbox = new System.Windows.Forms.CheckBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.OutputPathTextBox = new System.Windows.Forms.TextBox();
             this.OutputPathBrowseButton = new System.Windows.Forms.Button();
@@ -42,7 +43,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.TexturePathTextBox = new System.Windows.Forms.TextBox();
             this.TexturePathBrowseButton = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.GeneratePaintingBtn = new System.Windows.Forms.Button();
             this.SaveTemplateDialog = new System.Windows.Forms.SaveFileDialog();
             this.OpenTextureDialog = new System.Windows.Forms.OpenFileDialog();
             this.OutputBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
@@ -63,33 +64,45 @@
             this.TexturePreviewImageBox.TabIndex = 0;
             this.TexturePreviewImageBox.TabStop = false;
             // 
-            // download_template
+            // DownloadTemplateBtn
             // 
-            this.download_template.Location = new System.Drawing.Point(13, 282);
-            this.download_template.Name = "download_template";
-            this.download_template.Size = new System.Drawing.Size(261, 23);
-            this.download_template.TabIndex = 1;
-            this.download_template.Text = "Save PNG Template";
-            this.download_template.UseVisualStyleBackColor = true;
-            this.download_template.Click += new System.EventHandler(this.download_template_Click);
+            this.DownloadTemplateBtn.Location = new System.Drawing.Point(13, 284);
+            this.DownloadTemplateBtn.Name = "DownloadTemplateBtn";
+            this.DownloadTemplateBtn.Size = new System.Drawing.Size(261, 60);
+            this.DownloadTemplateBtn.TabIndex = 1;
+            this.DownloadTemplateBtn.Text = "Save PNG Template";
+            this.DownloadTemplateBtn.UseVisualStyleBackColor = true;
+            this.DownloadTemplateBtn.Click += new System.EventHandler(this.DownloadTemplateBtn_Click);
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.ModelSelection);
             this.groupBox2.Controls.Add(this.groupBox4);
             this.groupBox2.Controls.Add(this.groupBox3);
             this.groupBox2.Controls.Add(this.groupBox1);
-            this.groupBox2.Controls.Add(this.button1);
+            this.groupBox2.Controls.Add(this.GeneratePaintingBtn);
             this.groupBox2.Location = new System.Drawing.Point(280, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(462, 293);
+            this.groupBox2.Size = new System.Drawing.Size(459, 338);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
+            // 
+            // ModelSelection
+            // 
+            this.ModelSelection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ModelSelection.FormattingEnabled = true;
+            this.ModelSelection.Items.AddRange(new object[] {
+            "Painting Diego"});
+            this.ModelSelection.Location = new System.Drawing.Point(12, 19);
+            this.ModelSelection.Name = "ModelSelection";
+            this.ModelSelection.Size = new System.Drawing.Size(434, 21);
+            this.ModelSelection.TabIndex = 8;
             // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.EntityNameTextBox);
-            this.groupBox4.Controls.Add(this.checkBox1);
-            this.groupBox4.Location = new System.Drawing.Point(10, 149);
+            this.groupBox4.Controls.Add(this.NameSameAsTextureCheckbox);
+            this.groupBox4.Location = new System.Drawing.Point(6, 194);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(446, 72);
             this.groupBox4.TabIndex = 7;
@@ -106,25 +119,25 @@
             this.EntityNameTextBox.Text = "MyPainting";
             this.EntityNameTextBox.TextChanged += new System.EventHandler(this.EntityNameTextBox_TextChanged);
             // 
-            // checkBox1
+            // NameSameAsTextureCheckbox
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Checked = true;
-            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox1.Location = new System.Drawing.Point(6, 48);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(102, 17);
-            this.checkBox1.TabIndex = 4;
-            this.checkBox1.Text = "Same as texture";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.NameSameAsTextureCheckbox.AutoSize = true;
+            this.NameSameAsTextureCheckbox.Checked = true;
+            this.NameSameAsTextureCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.NameSameAsTextureCheckbox.Location = new System.Drawing.Point(6, 48);
+            this.NameSameAsTextureCheckbox.Name = "NameSameAsTextureCheckbox";
+            this.NameSameAsTextureCheckbox.Size = new System.Drawing.Size(102, 17);
+            this.NameSameAsTextureCheckbox.TabIndex = 4;
+            this.NameSameAsTextureCheckbox.Text = "Same as texture";
+            this.NameSameAsTextureCheckbox.UseVisualStyleBackColor = true;
+            this.NameSameAsTextureCheckbox.CheckedChanged += new System.EventHandler(this.NameSameAsTextureCheckbox_CheckedChanged);
             // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.OutputPathTextBox);
             this.groupBox3.Controls.Add(this.OutputPathBrowseButton);
             this.groupBox3.Controls.Add(this.OutputToCurrentLocationCheckBox);
-            this.groupBox3.Location = new System.Drawing.Point(10, 75);
+            this.groupBox3.Location = new System.Drawing.Point(6, 120);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(446, 68);
             this.groupBox3.TabIndex = 6;
@@ -169,7 +182,7 @@
             // 
             this.groupBox1.Controls.Add(this.TexturePathTextBox);
             this.groupBox1.Controls.Add(this.TexturePathBrowseButton);
-            this.groupBox1.Location = new System.Drawing.Point(10, 19);
+            this.groupBox1.Location = new System.Drawing.Point(6, 64);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(446, 50);
             this.groupBox1.TabIndex = 5;
@@ -194,15 +207,15 @@
             this.TexturePathBrowseButton.UseVisualStyleBackColor = true;
             this.TexturePathBrowseButton.Click += new System.EventHandler(this.TexturePathBrowseButton_Click);
             // 
-            // button1
+            // GeneratePaintingBtn
             // 
-            this.button1.Location = new System.Drawing.Point(10, 227);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(446, 60);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Generate Painting";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.GeneratePaintingBtn.Location = new System.Drawing.Point(6, 272);
+            this.GeneratePaintingBtn.Name = "GeneratePaintingBtn";
+            this.GeneratePaintingBtn.Size = new System.Drawing.Size(446, 60);
+            this.GeneratePaintingBtn.TabIndex = 3;
+            this.GeneratePaintingBtn.Text = "Generate Painting";
+            this.GeneratePaintingBtn.UseVisualStyleBackColor = true;
+            this.GeneratePaintingBtn.Click += new System.EventHandler(this.GeneratePaintingBtn_Click);
             // 
             // SaveTemplateDialog
             // 
@@ -224,19 +237,18 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(754, 319);
+            this.ClientSize = new System.Drawing.Size(748, 361);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.download_template);
+            this.Controls.Add(this.DownloadTemplateBtn);
             this.Controls.Add(this.TexturePreviewImageBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Main";
-            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Amnesia: Picasso - 1.0.0";
-            this.Load += new System.EventHandler(this.Main_Load);
             ((System.ComponentModel.ISupportInitialize)(this.TexturePreviewImageBox)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
@@ -252,22 +264,23 @@
         #endregion
 
         private System.Windows.Forms.PictureBox TexturePreviewImageBox;
-        private System.Windows.Forms.Button download_template;
+        private System.Windows.Forms.Button DownloadTemplateBtn;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox TexturePathTextBox;
         private System.Windows.Forms.Button TexturePathBrowseButton;
         private System.Windows.Forms.CheckBox OutputToCurrentLocationCheckBox;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button GeneratePaintingBtn;
         private System.Windows.Forms.TextBox OutputPathTextBox;
         private System.Windows.Forms.Button OutputPathBrowseButton;
         private System.Windows.Forms.SaveFileDialog SaveTemplateDialog;
         private System.Windows.Forms.OpenFileDialog OpenTextureDialog;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox NameSameAsTextureCheckbox;
         private System.Windows.Forms.TextBox EntityNameTextBox;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.FolderBrowserDialog OutputBrowserDialog;
+        private System.Windows.Forms.ComboBox ModelSelection;
     }
 }
 

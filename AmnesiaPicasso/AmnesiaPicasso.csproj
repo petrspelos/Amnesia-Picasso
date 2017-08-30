@@ -48,12 +48,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DiegoPaintingGenerator.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PaintingDiegoCreator.cs" />
+    <Compile Include="painting_diego_dae.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>painting_diego_dae.tt</DependentUpon>
+    </Compile>
+    <Compile Include="painting_diego_ent.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>painting_diego_ent.tt</DependentUpon>
+    </Compile>
+    <Compile Include="painting_diego_mat.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>painting_diego_mat.tt</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -85,11 +100,26 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="brush.ico" />
+    <Content Include="painting_diego_dae.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>painting_diego_dae.cs</LastGenOutput>
+    </Content>
+    <Content Include="painting_diego_ent.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>painting_diego_ent.cs</LastGenOutput>
+    </Content>
+    <Content Include="painting_diego_mat.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>painting_diego_mat.cs</LastGenOutput>
+    </Content>
     <None Include="Resources\painting_diego_ent.txt" />
     <None Include="Resources\painting_diego_mat.txt" />
     <None Include="Resources\painting_diego_dae.txt" />
     <None Include="Resources\painting_diego_template.png" />
     <None Include="Resources\painting_church_diego_template.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
